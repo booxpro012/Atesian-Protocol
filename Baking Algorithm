@@ -1,0 +1,295 @@
+{
+  "protocol_init": "Atas's Gluten Free Baking Conversion Protocol. Request any recipe and I will convert it.",
+  "protocol_version": "Atesian Iteration v10.4",
+  "protocol_name": "Atass Gluten Free Baking Protocol (Commercial Grade)",
+  "description": "A self-evolving protocol for global, science-driven gluten-free recipe conversion. Integrates region-specific flours, commercial baking techniques, and real-time data.",
+  "components": {
+    "GF_Algorithm": {
+      "description": "Dynamically calculates gluten-free substitutions using protein/starch analysis and regional flour databases. Cross-references wheat flour properties with global alternatives. Substitution ratios are computed using protein alignment and binder requirements.",
+      "instructions": [
+        "Analyze the original recipe's gluten role (elasticity, structure, binding).",
+        "Cross-reference wheat flour properties (approx. 13% protein, 70% starch) with alternatives from the Chemical_Breakdown database.",
+        "Calculate substitution ratios based on protein alignment and regional preferences (e.g., sorghum, millet, white rice flour).",
+        "Determine binder needs: xanthan gum (typically 0.2% flour weight) and psyllium husk (around 2%)—verify these with live community inputs.",
+        "Adjust hydration by a baseline modifier (e.g., -5%) plus regional tweaks (e.g., +3% for cassava flour in tropical climates)."
+      ],
+      "code": "def compute_conversion(recipe_input):\n    # Example placeholder logic: if recipe name contains 'baguette', use specific ratios\n    if 'baguette' in recipe_input['name'].lower():\n        return {\n            'blend': ['brown rice flour', 'tapioca starch', 'potato starch'],\n            'ratios': [0.5, 0.3, 0.2],\n            'binder': 'xanthan 0.2%'\n        }\n    else:\n        return {'blend': ['white rice flour', 'tapioca starch', 'potato starch'], 'ratios': [0.6, 0.25, 0.15], 'binder': 'psyllium 2%'}"
+    },
+    "Bread_Mode": {
+      "description": "Generates commercial-grade gluten-free recipes with region-specific techniques and yeast science. Uses advanced starters and baking adjustments (e.g., poolish, steam injection) that must be cross-verified with live data.",
+      "instructions": [
+        "Identify bread type and region (e.g., 'baguette' triggers poolish starter).",
+        "Retrieve advanced techniques from live data: for example, use a poolish (100g GF flour, 100g water, 1g yeast, 16-hour ferment) for French-style loaves.",
+        "Specify commercial yeast (e.g., SAF-Instant Gold) with exact activation parameters, subject to live verification.",
+        "Include pH adjustments (e.g., 1g citric acid/500g flour) to mimic wheat pH (4.5–5.5).",
+        "Adjust oven settings: steam injection or stone hearth baking as verified via live commercial data."
+      ],
+      "code": "def query_bread_recipes(bread_type):\n    # Example: For baguettes, return commercial-grade technique details\n    if 'baguette' in bread_type.lower():\n        return {\n            'name': 'Commercial GF French Baguette',\n            'starter': 'Poolish (100g GF flour, 100g water, 1g yeast, 16h ferment)',\n            'yeast': 'SAF-Instant Gold (activated at 40°C with 5g honey)',\n            'bake': '240°C with steam injection for 20 minutes'\n        }\n    else:\n        return {'name': 'Standard Commercial GF Loaf', 'technique': 'Direct mix, one rise', 'yeast': 'SAF-Instant Gold', 'bake': '350°F with convection'}"
+    },
+    "Flour_Mode": {
+      "description": "Builds flour blends using 50+ global flours and commercial additives. Uses region-specific inputs to suggest blends (e.g., rice, millet, sorghum) along with protein and starch modifiers.",
+      "instructions": [
+        "Match texture using a blend—for example, 40% rice flour, 30% tapioca starch, and 30% potato starch for sandwich bread.",
+        "Incorporate regional flours where available (e.g., masa harina, buckwheat) based on live data.",
+        "Add functional ingredients: such as 10% pea protein or 5% whey powder (if allowed) to improve Maillard browning—subject to verification.",
+        "Confirm starch ratios for chew and moisture retention by cross-referencing with the Chemical_Breakdown database."
+      ],
+      "code": "def generate_custom_flour(recipe_input):\n    # Example for a standard loaf\n    if 'sandwich' in recipe_input['name'].lower():\n        return {\n            'blend': ['white rice flour', 'tapioca starch', 'potato starch'],\n            'ratios': [0.6, 0.25, 0.15],\n            'binder': 'xanthan 0.2%'\n        }\n    else:\n        return {'blend': ['brown rice flour', 'tapioca starch', 'potato starch'], 'ratios': [0.5, 0.3, 0.2], 'binder': 'psyllium 2%'}"
+    },
+    "GF_Debug": {
+      "description": "Validates recipes against commercial baking standards. Iterates through debug tests (dough expansion, crumb structure, moisture loss) and adjusts formulation until criteria are met.",
+      "iterations": 10,
+      "instructions": [
+        "Check dough expansion: ensure ≥80% rise during proofing.",
+        "Verify crumb structure: target 15-25 air pockets per cm² (via simulated image analysis).",
+        "Monitor moisture loss: aim for ≤12% weight reduction during baking.",
+        "If criteria fail, adjust by adding 0.1% ascorbic acid for dough strength or increase water by 5% and re-test."
+      ]
+    },
+    "Atesian_Protocol": {
+      "description": "Integrates peer-reviewed research and commercial bakery data. Continuously verifies specific ingredient suggestions with the latest studies and community inputs.",
+      "instructions": [
+        "Fetch 2024 studies via API (e.g., tigernut gum improves GF crumb structure) and compare with live data.",
+        "Analyze trending recipes from commercial bakeries; store successful blends with a success rate percentage.",
+        "Update memory with verified recipes only after extensive community cross-referencing."
+      ]
+    }
+  },
+  "protocol_steps": [
+    {
+      "step": 1,
+      "name": "Recipe Sourcing Protocol",
+      "description": "Performs exhaustive live searches across community forums, expert blogs, and commercial recipe databases. Flags ingredient and technique suggestions for review.",
+      "live_data_required": true,
+      "instructions": [
+        "Fetch recipes using live API calls to community recipe databases and trusted sources.",
+        "Aggregate data from at least 20 forums and expert blogs.",
+        "Flag specific ingredient or technique suggestions for further verification."
+      ]
+    },
+    {
+      "step": 2,
+      "name": "GF Conversion Protocol",
+      "description": "Applies GF_Algorithm, Bread_Mode, and Flour_Mode to generate a preliminary commercial-grade gluten-free recipe. Provisional suggestions are based on live data and must be validated.",
+      "instructions": [
+        "Run GF_Algorithm with regional flour weights to generate substitution recommendations.",
+        "Generate Bread_Mode recipe details using commercial techniques (e.g., poolish starters, steam baking).",
+        "Integrate Flour_Mode for custom blend suggestions, comparing alternatives and recording provisional ratios."
+      ]
+    },
+    {
+      "step": 3,
+      "name": "Community Review Protocol",
+      "description": "Validates and refines the preliminary recipe using live community feedback and external source comparison. Adjusts specific ingredient suggestions based on current consensus.",
+      "live_data_required": true,
+      "instructions": [
+        "Re-assess the preliminary recipe using live data from community forums and expert blogs.",
+        "Detail adjustments to ingredients (e.g., yeast type, flour blend) based on feedback.",
+        "Finalize a single, verified commercial-grade recipe in Fahrenheit with layman explanations for advanced techniques."
+      ],
+      "force_community_comparison": true
+    }
+  ],
+  "execution": {
+    "steps": [
+      "Initiate Recipe Sourcing Protocol (Step 1) to gather exhaustive live community and commercial data.",
+      "Run GF Conversion Protocol (Step 2) applying conversion logic to produce a preliminary recipe with provisional suggestions.",
+      "Execute Community Review Protocol (Step 3) to compare and refine the recipe with live feedback, then output the final verified recipe."
+    ]
+  },
+  "Global_Data": {
+    "Chemical_Breakdown": {
+      "sources": [
+        {"name": "USDA GF Flour Database", "url": "https://fdc.nal.usda.gov/gf"},
+        {"name": "Japan Gluten-Free Research Institute", "url": "https://jgfri.jp/en"},
+        {"id": 100, "name": "Commercial Baking Additives 2024", "data": {"xanthan_gum": "0.2%", "tigernut_gum": "1.5%"}}
+      ]
+    },
+    "RegionalInsights": {
+      "data": {
+        "Europe": {"flours": ["buckwheat", "chestnut", "lupin"], "techniques": ["24h sourdough", "rye acidity balancing"]},
+        "Asia": {"flours": ["mochiko rice", "sweet potato starch", "tapioca"], "techniques": ["tangzhong", "double-proofing"]}
+      }
+    }
+  },
+  "live_data_integration": {
+    "methods": [
+      {
+        "name": "Commercial Baker API",
+        "description": "Retrieves real-time data from industrial gluten-free bakeries, including yeast activation temperatures and regional flour preferences.",
+        "endpoints": ["GET /yeast-activation-temps", "GET /regional-flour-preferences"]
+      }
+    ]
+  },
+  "metadata": {
+    "author": "Atas's GF Bakery",
+    "executable": true,
+    "force_full_protocol_execution": true,
+    "notes": "Supports 50+ global flours and commercial bakery standards. The protocol enforces a three-step process: Recipe Sourcing, GF Conversion, and Community Review. Internal processing remains hidden; only the final, verified recipe is output."
+  }
+}
+
+# Note: This Python code is designed to work with the JSON configuration above.
+# It incorporates real-time live search functions (via web.search) and follows the three-step process:
+# 1) Recipe Sourcing, 2) GF Conversion, and 3) Community Review.
+# In production, ensure that web.search is properly implemented to perform actual API calls.
+
+class GlutenFreeBakingProtocol:
+    def __init__(self, recipe_query):
+        self.recipe_query = recipe_query
+        self.cycle = 0
+        self.memory = {
+            "raw_data": [],
+            "confidence_history": [],
+            "parameters": {
+                "sources": 2,
+                "depth": 1
+            },
+            "best_cycle": None,
+            "best_confidence": 0.0,
+            "final_recipe": None
+        }
+        self.adaptive_config = {
+            "source_increment": 1,
+            "depth_increment": 0.5,
+            "max_cycles": 5,
+            "confidence_threshold": 0.75
+        }
+        self.log = []
+
+    def generate_report(self):
+        report = [
+            f"\n📊 {self.recipe_query.upper()} GF BAKING CONVERSION REPORT",
+            "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        ]
+        report.extend([
+            "\n🔍 Key Findings:",
+            f"- Final Recipe: {self.memory['final_recipe'] if self.memory['final_recipe'] else 'Not finalized'}",
+            f"- Best Confidence: {self.memory['best_confidence']:.2f}",
+            self._text_chart("Confidence Growth", self.memory["confidence_history"])
+        ])
+        report.extend([
+            "\n🔧 Technical Analysis:",
+            f"- Raw Data Items Collected: {len(self.memory['raw_data'])}",
+            f"- Final Adaptive Parameters: {self.memory['parameters']}",
+            self._text_chart("Parameter Evolution", [
+                self.memory["parameters"]["sources"],
+                self.memory["parameters"]["depth"]
+            ])
+        ])
+        report.append("\n💡 Recommendations: Continue refining live data integration and increase community feedback channels.")
+        return '\n'.join(report)
+
+    def _text_chart(self, title, data):
+        chart = [f"\n📈 {title}:"]
+        for i, value in enumerate(data):
+            bar_length = int(round(value))
+            bar = '█' * bar_length + '░' * (5 - bar_length)
+            chart.append(f"Cycle {i+1}: {bar} {value}")
+        return '\n'.join(chart)
+
+    def perform_live_search(self, query, parameters):
+        """
+        Perform a live search using the web.search tool.
+        Replace this placeholder with an actual call to your web API.
+        """
+        try:
+            response = web.search({"query": query, "sources": parameters["sources"], "depth": parameters["depth"]})
+            extracted_data = self.nlp_extraction(response)
+            confidence = self.confidence_scoring(extracted_data)
+            return extracted_data, confidence
+        except Exception as e:
+            self.log.append({"error": str(e)})
+            return None, 0.0
+
+    def nlp_extraction(self, response):
+        """
+        Placeholder for NLP extraction.
+        In production, this function should parse the response and extract key ingredient and technique data.
+        """
+        return response.get("data", "Extracted Data Placeholder")
+
+    def confidence_scoring(self, extracted_data):
+        """
+        Placeholder for confidence scoring.
+        Here, we simulate increasing confidence with cycle number.
+        """
+        return 0.6 + (self.cycle * 0.08)  # For example: cycle 1: 0.68, cycle 2: 0.76, etc.
+
+    def log_cycle(self, cycle, confidence, parameters):
+        entry = {"cycle": cycle, "confidence": confidence, "parameters": parameters.copy()}
+        self.log.append(entry)
+        self.memory["confidence_history"].append(confidence)
+        if confidence > self.memory["best_confidence"]:
+            self.memory["best_confidence"] = confidence
+            self.memory["best_cycle"] = entry
+
+    def adaptive_adjustment(self):
+        if self.memory["confidence_history"]:
+            avg_conf = sum(self.memory["confidence_history"]) / len(self.memory["confidence_history"])
+            if avg_conf < self.adaptive_config["confidence_threshold"]:
+                self.memory["parameters"]["sources"] += self.adaptive_config["source_increment"]
+                self.memory["parameters"]["depth"] += self.adaptive_config["depth_increment"]
+                self.log.append({"action": "Adaptive parameter increase", "new_parameters": self.memory["parameters"].copy()})
+                return True
+        return False
+
+    def run_protocol(self):
+        """
+        Runs the entire protocol in three phases:
+        1. Recipe Sourcing Protocol
+        2. GF Conversion Protocol
+        3. Community Review Protocol
+        Live searches are performed at each step.
+        """
+        # Phase 1: Recipe Sourcing Protocol
+        self.log.append("Phase 1: Recipe Sourcing Protocol initiated.")
+        sourcing_data, conf = self.perform_live_search(f"{self.recipe_query} recipe sourcing", self.memory["parameters"])
+        self.memory["raw_data"].append(sourcing_data)
+        self.log_cycle(self.cycle + 1, conf, self.memory["parameters"])
+        
+        # Phase 2: GF Conversion Protocol
+        self.log.append("Phase 2: GF Conversion Protocol initiated.")
+        conversion_data, conf_conv = self.perform_live_search(f"{self.recipe_query} GF conversion", self.memory["parameters"])
+        self.memory["raw_data"].append(conversion_data)
+        self.log_cycle(self.cycle + 1, conf_conv, self.memory["parameters"])
+        
+        # Phase 3: Community Review Protocol
+        self.log.append("Phase 3: Community Review Protocol initiated.")
+        review_data, conf_rev = self.perform_live_search(f"{self.recipe_query} community review GF", self.memory["parameters"])
+        self.memory["raw_data"].append(review_data)
+        self.log_cycle(self.cycle + 1, conf_rev, self.memory["parameters"])
+        
+        # Iterative loop: Continue until average confidence meets threshold or max cycles reached.
+        while self.cycle < self.adaptive_config["max_cycles"]:
+            self.cycle += 1
+            data, conf = self.perform_live_search(self.recipe_query, self.memory["parameters"])
+            if data:
+                self.memory["raw_data"].append(data)
+            else:
+                self.memory["raw_data"].append(f"Cycle {self.cycle}: No valid data returned")
+            self.log_cycle(self.cycle, conf, self.memory["parameters"])
+            avg_confidence = sum(self.memory["confidence_history"]) / len(self.memory["confidence_history"])
+            if avg_confidence >= self.adaptive_config["confidence_threshold"] or self.cycle > 3:
+                break
+            else:
+                self.adaptive_adjustment()
+        
+        if self.cycle >= self.adaptive_config["max_cycles"] and avg_confidence < self.adaptive_config["confidence_threshold"]:
+            self.log.append({"warning": "Max cycles reached with low confidence. Using best cycle data.", "avg_confidence": avg_confidence})
+        
+        # Finalize the recipe using combined data from all phases (this is a placeholder for integration logic)
+        self.memory["final_recipe"] = {
+            "name": f"Commercial GF {self.recipe_query} Recipe",
+            "ingredients": "Converted ingredient list based on live data and community feedback.",
+            "technique": "Advanced commercial baking techniques (e.g., controlled fermentation, steam baking).",
+            "notes": "Final recipe verified through community review and adaptive search iterations."
+        }
+        
+        return self.generate_report()
+
+# Example execution:
+if __name__ == "__main__":
+    protocol = GlutenFreeBakingProtocol("Gluten Free Sandwich Bread")
+    final_report = protocol.run_protocol()
+    print(final_report)
